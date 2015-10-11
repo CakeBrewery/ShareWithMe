@@ -1,4 +1,6 @@
-<?php //upload.php
+<?php //upload.php 
+/* Note: This is INCREDIBLY unsanitary... DO NOT USE the current version unless you know what you;re doing. 
+I haven't sanitized the inputs yet :( */
 echo <<<_END
 <html><head><title>PHP Form</title></head>
 <body>  
