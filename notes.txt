@@ -3,6 +3,7 @@ restart php with:
 sudo service php5-fpm restart 
 
 
+
 Use info.php to check configuration status. 
 
 set nginx to allow for up to 150M 
