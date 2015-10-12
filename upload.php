@@ -1,22 +1,49 @@
-<?php //upload.php 
-/* Note: This is INCREDIBLY unsanitary... DO NOT USE the current version unless you know what you;re doing. 
-I haven't sanitized the inputs yet :( */
-echo <<<_END
-<html><head><title>PHP Form</title></head>
-<body>  
-    <form method='post' action='upload.php' enctype="multipart/form-data">
-        Select File: <input type='file' name='filename' size='10' />
-        <input type='submit' value='Upload' /> 
-    </form>
-_END;
+<?php
+include 'upload-model.php';
+include 'upload-controller.php';
 
 
-if($_FILES)
-{
-	$name = $_FILES['filename']['name'];
-	move_uploaded_file($_FILES['filename']['tmp_name'], 'uploads/' . $name);
-	echo "Uploaded file '$name' ";
+$model = new Model(); 
+$controller = new Controller($model); 
+$view = new View($controller, $model); 
+
+
+if($_FILES){
+	$controller->checkFiles($_FILES); 
+	$error = "files!"; 
 }
 
-echo "</body></html>";
+echo $view->output(); 
+
 ?>
+
+
+<?php
+class view
+{
+    private $model; 
+    private $controller; 
+
+
+    public function __construct($controller, $model){
+        $this->controller = $controller; 
+        $this->model = $model; 
+    }
+
+    public function output(){
+        return " 
+        <html><head><title>Share</title></head>
+        <body>
+	       	<form method='post' action='upload.php' enctype='multipart/form-data'>
+	        	Select File: <input type='file' name='filename' size='10' />
+	        	<input type='submit' value='Upload' />
+        	</form> 
+        	<p>". $this->model->status."</p> 
+        </body></html> 
+    	";
+    }
+}
+
+?>
+
+
