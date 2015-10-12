@@ -1,13 +1,11 @@
 <?php
-
-class Model
+class UploadModel
 {
-	public $status; 
-    public $string; 
+    public $status; 
+    public $error; 
     public function __construct(){
-        $this->string = "MVC + PHP = Awesome, click here!"; 
         $this->status = ""; 
+        $this->error = ""; 
     }
 }
-
 ?>
