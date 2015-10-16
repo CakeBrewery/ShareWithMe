@@ -1,10 +1,9 @@
 
-restart php with: 
+restart php (on my machine) with: 
 sudo service php5-fpm restart 
-
-
 
 Use info.php to check configuration status. 
 
-set nginx to allow for up to 150M 
+Recommended Settings: 
+set nginx to allow for up to 150M (reasonable? ) 
 set php to allow for up to 150M (in the configuration file, check with info.php);  
